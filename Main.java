@@ -6,13 +6,13 @@ public class Main {
 
     public static void main(String[] args) {
         char [][] sokoban = new char [7][];
-        sokoban [0] = " ####### " . toCharArray ();
-        sokoban [1] = " #.....# " . toCharArray ();
+        sokoban [0] = "#######" . toCharArray ();
+        sokoban [1] = "#.....#" . toCharArray ();
         sokoban [2] = "#..$..#" .toCharArray();
         sokoban [3] = "#.$@$.#" .toCharArray();
         sokoban [4] = "#..$..#" .toCharArray();
-        sokoban [5] = " #.....# " . toCharArray ();
-        sokoban [6] = " ####### " . toCharArray ();
+        sokoban [5] = "#.....#" . toCharArray ();
+        sokoban [6] = "#######" . toCharArray ();
 
         Sokoban ss = new Sokoban(sokoban);
         System.out.println(ss.sokobanToString(sokoban));
