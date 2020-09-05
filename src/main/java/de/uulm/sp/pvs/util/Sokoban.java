@@ -36,7 +36,10 @@ public class Sokoban {
 
     /**
      * @return a printable String containing line breaks to print the playing field in console
+     *
+     *
      */
+    @Override
     public String toString() {
         String s = "";
         for (int i = 0; i < this.playingField.length; i++) {
