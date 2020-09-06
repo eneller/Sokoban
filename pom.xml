@@ -10,7 +10,7 @@
 
   <name>sokoban</name>
   <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <url>https://github.com/eneller/Sokoban</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -69,10 +69,23 @@
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
+        <plugin>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <configuration>
+            <archive>
+              <manifest>
+                <mainClass>fully.qualified.MainClass</mainClass>
+              </manifest>
+            </archive>
+            <descriptorRefs>
+              <descriptorRef>jar-with-dependencies</descriptorRef>
+            </descriptorRefs>
+          </configuration>
+        </plugin>
       </plugins>
     </pluginManagement>
   </build>
-
+<!--
   <build>
     <plugins>
       <plugin>
@@ -90,4 +103,5 @@
       </plugin>
     </plugins>
   </build>
+  -->
 </project>

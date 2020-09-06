@@ -1,0 +1,8 @@
+
+7
+java:S1643"Use a StringBuilder instead.(¾ÄÀ«8ªßý¯Ä.
+S	java:S106"9Replace this use of System.out or System.err by a logger.(Àºôä8ªßý¯Ä.
+7
+java:S1643"Use a StringBuilder instead.(Þ¶³ú8ªßý¯Ä.
+r
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 29 to the 15 allowed.(ý©÷¨ùÿÿÿÿ8ªßý¯Ä.
