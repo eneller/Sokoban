@@ -1,0 +1,37 @@
+
+T
+java:S2629z"7Use the built-in formatting to construct this argument.(üÍ…å8ô¥¼œÆ.
+G
+java:S2629”"$Invoke method(s) only conditionally.(öÇ¶åüÿÿÿÿ8ô¥¼œÆ.
+i
+java:S3457ƒ"KFormat specifiers or lambda should be used instead of string concatenation.(Âçùè8ô¥¼œÆ.
+T
+java:S2629{"7Use the built-in formatting to construct this argument.(ñ–İ8ô¥¼œÆ.
+t
+java:S3776!"RRefactor this method to reduce its Cognitive Complexity from 25 to the 15 allowed.(‰‘ëÔúÿÿÿÿ8Ö†şÅ.
+h
+java:S3457z"KFormat specifiers or lambda should be used instead of string concatenation.(üÍ…å8ô¥¼œÆ.
+z
+java:S2629ƒ"\Invoke method(s) only conditionally. Use the built-in formatting to construct this argument.(Âçùè8ô¥¼œÆ.
+V
+java:S1481H"4Remove this unused "sokobanDocument" local variable.(¥Œ¼¢ûÿÿÿÿ8äÃœÆ.
+K
+java:S1068".Remove this unused "XML_SCHEMA" private field.(·Ï«Ò8äÃœÆ.
+O
+java:S2755,"3Disable access to external entities in XML parsing.(Ø†ï`8äÃœÆ.
+U
+java:S2629"7Use the built-in formatting to construct this argument.( ¡’±8ô¥¼œÆ.
+a
+java:S1128"?Remove this unused import 'org.xml.sax.helpers.DefaultHandler'.(ø°ñ„şÿÿÿÿ8Ş‹ƒ–Æ.
+v
+java:S2293c"YReplace the type specification in this constructor call with the diamond operator ("<>").(œœÕ¼8ô¥¼œÆ.
+h
+java:S3457{"KFormat specifiers or lambda should be used instead of string concatenation.(ñ–İ8ô¥¼œÆ.
+N
+java:S1068"1Remove this unused "SCHEMA_SOURCE" private field.(€£îÚ8¦ò¯œÆ.
+i
+java:S3457"KFormat specifiers or lambda should be used instead of string concatenation.( ¡’±8ô¥¼œÆ.
+P
+java:S2755%"3Disable access to external entities in XML parsing.(ù«ê8äÃœÆ.
+F
+java:S2629u"$Invoke method(s) only conditionally.(¤¡ßîÿÿÿÿÿ8ô¥¼œÆ.

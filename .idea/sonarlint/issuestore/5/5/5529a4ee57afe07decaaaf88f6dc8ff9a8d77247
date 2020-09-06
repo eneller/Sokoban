@@ -1,5 +1,5 @@
 
+†
+java:S1130E"iRemove the declaration of thrown exception 'java.lang.NullPointerException' which is a runtime exception.(¾Ïæ³8ÄÒí¯Ä.
 „
-java:S1130"iRemove the declaration of thrown exception 'java.lang.NullPointerException' which is a runtime exception.(¾Ïæ³8ÄÒí¯Ä.
-‚
-java:S1130"gRemove the declaration of thrown exception 'java.lang.ClassCastException' which is a runtime exception.(¾Ïæ³8ÄÒí¯Ä.
+java:S1130E"gRemove the declaration of thrown exception 'java.lang.ClassCastException' which is a runtime exception.(¾Ïæ³8ÄÒí¯Ä.

@@ -7,12 +7,9 @@ import java.util.Scanner;
 
 /**
  * Hello world!
- *
  */
-public class App
-{
-    public static void main ( String[] args ) throws Exception
-    {
+public class App {
+    public static void main(String[] args) throws Exception {
         char[][] c = new char[7][];
         c[0] = "######a".toCharArray();
         c[1] = "#.....#".toCharArray();
@@ -25,20 +22,18 @@ public class App
         SokobanLevel sl = new SokobanLevel("resources/lvlexample.xml");
 
 
-
         Sokoban s = new Sokoban(sl.getPlayingField());
         Sokoban t = new Sokoban(c);
 
         runSokoban(t);
 
 
-
     }
 
-    public static void runSokoban(Sokoban s){
+    public static void runSokoban(Sokoban s) {
         Scanner scn = new Scanner(System.in);
-        boolean run=true;
-        while(run) {
+        boolean run = true;
+        while (run) {
             System.out.println(s);
             System.out.println("Move your Player @ in one of the directions U/R/D/L");
             if (scn.hasNext()) {
