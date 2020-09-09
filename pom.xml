@@ -9,7 +9,7 @@
   <version>1.0-SNAPSHOT</version>
 
   <name>sokoban</name>
-  <!-- FIXME change it to the project's website -->
+  <!-- change it to the project's website -->
   <url>https://github.com/eneller/Sokoban</url>
 
   <properties>
@@ -51,6 +51,14 @@
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
           <version>3.0.2</version>
+          <configuration>
+            <archive>
+              <manifest>
+                <addClasspath>true</addClasspath>
+                <mainClass>de.uulm.sp.pvs.App</mainClass>
+              </manifest>
+            </archive>
+          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
@@ -74,7 +82,7 @@
           <configuration>
             <archive>
               <manifest>
-                <mainClass>fully.qualified.MainClass</mainClass>
+                <mainClass>de.uulm.sp.pvs.App</mainClass>
               </manifest>
             </archive>
             <descriptorRefs>
