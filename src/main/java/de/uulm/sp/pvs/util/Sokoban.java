@@ -26,7 +26,7 @@ public class Sokoban {
 
         for (int i = 0; i < this.playingField.length; i++) {
             for (int j = 0; j < this.playingField[i].length; j++) {
-                if (this.playingField[i][j] == '@') {
+                if (this.playingField[i][j] == '@' || this.playingField[i][j] == '+') {//find player on free field or on goal
                     return new int[]{i, j};
                 }
             }
@@ -36,8 +36,6 @@ public class Sokoban {
 
     /**
      * @return a printable String containing line breaks to print the playing field in console
-     *
-     *
      */
     @Override
     public String toString() {
@@ -54,78 +52,94 @@ public class Sokoban {
     /**
      * moves the player symbol in the given playing field by checking two cases: if the next field is free or it is a crate and the following is free
      *
-     *
-     * @param dir          the direction in which to move, north east south west
+     * @param dir the direction in which to move, north east south west
      * @return true, if the player was moved in the specified direction, false if not
      * @throws IllegalStateException if an Illegal character is entered
      */
-    public boolean move( String dir) {
-        boolean b = false;
+    public boolean move(String dir) {
+        boolean moveSuccessful = false;
         dir = dir.toLowerCase();
         int[] ppos = findPlayer();
+        int ypos = ppos[0];
+        int ydir = 0;
+        int xpos = ppos[1];
+        int xdir = 0;
+        char current = playingField[ypos][xpos];
         switch (dir) {
 
             case "u":
-                if (playingField[ppos[0] - 1][ppos[1]] == '.') {
-                    playingField[ppos[0] - 1][ppos[1]] = '@';//move player
-                    playingField[ppos[0]][ppos[1]] = '.'; //free old position
-                    b = true;
-                } else {
-                    if (ppos[0] > 1 && playingField[ppos[0] - 1][ppos[1]] == '$' && playingField[ppos[0] - 2][ppos[1]] == '.') {
-                        playingField[ppos[0] - 2][ppos[1]] = '$';// move chest
-                        playingField[ppos[0] - 1][ppos[1]] = '@';//move player
-                        playingField[ppos[0]][ppos[1]] = '.'; //free old position
-                        b = true;
-                    }
-                }
+                ydir = -1;
                 break;
             case "r":
-                if (playingField[ppos[0]][ppos[1] + 1] == '.') {
-                    playingField[ppos[0]][ppos[1] + 1] = '@';//move player
-                    playingField[ppos[0]][ppos[1]] = '.'; //free old position
-                    b = true;
-                } else {
-                    if (ppos[1] < playingField[ppos[0]].length - 1 && playingField[ppos[0]][ppos[1] + 1] == '$' && playingField[ppos[0]][ppos[1] + 2] == '.') {
-                        playingField[ppos[0]][ppos[1] + 2] = '$';// move chest
-                        playingField[ppos[0]][ppos[1] + 1] = '@';//move player
-                        playingField[ppos[0]][ppos[1]] = '.'; //free old position
-                        b = true;
-                    }
-                }
+                xdir = 1;
                 break;
             case "d":
-                if (playingField[ppos[0] + 1][ppos[1]] == '.') {
-                    playingField[ppos[0] + 1][ppos[1]] = '@';//move player
-                    playingField[ppos[0]][ppos[1]] = '.'; //free old position
-                    b = true;
-                } else {
-                    if (ppos[0] < playingField.length - 1 && playingField[ppos[0] + 1][ppos[1]] == '$' && playingField[ppos[0] + 2][ppos[1]] == '.') {
-                        playingField[ppos[0] + 2][ppos[1]] = '$';// move chest
-                        playingField[ppos[0] + 1][ppos[1]] = '@';//move player
-                        playingField[ppos[0]][ppos[1]] = '.'; //free old position
-                        b = true;
-                    }
-                }
+                ydir = 1;
                 break;
             case "l":
-                if (playingField[ppos[0]][ppos[1] - 1] == '.') {
-                    playingField[ppos[0]][ppos[1] - 1] = '@';//move player
-                    playingField[ppos[0]][ppos[1]] = '.'; //free old position
-                    b = true;
-                } else {
-                    if (ppos[1] > 1 && playingField[ppos[0]][ppos[1] - 1] == '$' && playingField[ppos[0]][ppos[1] - 2] == '.') {
-                        playingField[ppos[0]][ppos[1] - 2] = '$';// move chest
-                        playingField[ppos[0]][ppos[1] - 1] = '@';//move player
-                        playingField[ppos[0]][ppos[1]] = '.'; //free old position
-                        b = true;
-                    }
-                }
+                xdir = -1;
                 break;
+
             default:
                 throw new IllegalStateException("Unexpected value: " + dir);
         }
-        return b;
-    }
+        char first = playingField[ypos + ydir][xpos + xdir];
+        char second = 'E';
+        if (ypos + (2 * ydir) < playingField.length && xpos + (2 * xdir) < playingField[ypos].length) {
+            second = playingField[ypos + (2 * ydir)][xpos + (2 * xdir)];
+        }
+        //first attempt to move the player
+        switch (first) {
+            case '.':
+                playingField[ypos + ydir][xpos + xdir] = '+';
+                moveSuccessful = true;
+                break;
+            case ' ':
+                playingField[ypos + ydir][xpos + xdir] = '@';
+                moveSuccessful = true;
+                break;
+            case '*':
+                switch (second) {
+                    case ' ':
+                        playingField[ypos + (2 * ydir)][xpos + (2 * xdir)] = '$';
+                        playingField[ypos + ydir][xpos + xdir] = '+';
+                        moveSuccessful = true;
+                        break;
+                    case '.':
+                        playingField[ypos + (2 * ydir)][xpos + (2 * xdir)] = '*';
+                        playingField[ypos + ydir][xpos + xdir] = '+';
+                        moveSuccessful = true;
+                        //default uses predefined moveSuccessful = false
+                }
+                break;
+            case '$':
+                switch (second) {
+                    case ' ':
+                        playingField[ypos + (2 * ydir)][xpos + (2 * xdir)] = '$';
+                        playingField[ypos + ydir][xpos + xdir] = '@';
+                        moveSuccessful = true;
+                        break;
+                    case '.':
+                        playingField[ypos + (2 * ydir)][xpos + (2 * xdir)] = '*';
+                        playingField[ypos + ydir][xpos + xdir] = '@';
+                        moveSuccessful = true;
+                        break;
+                    //default uses predefined moveSuccessful = false
+                }
+                break;
+        }
 
+        if (moveSuccessful) {//free the field
+            switch (current) {
+                case '@':
+                    playingField[ypos][xpos] = ' ';
+                    break;
+                case '+':
+                    playingField[ypos][xpos] = '.';
+                    break;
+            }
+        }
+        return moveSuccessful;
+    }
 }
 
